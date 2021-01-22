@@ -1,12 +1,10 @@
-
-
+//Github --->   https://github.com/Ujjalzaman/assignment-Js/blob/main/assignment.js
 
 //Problem 1 ----> covert kilometer to Meter
 
 function kilometerToMeter(kilometer){
-    if(kilometer<0){                                    //to avoid negative number
-        console.log("please input valid number")
-        return false;
+    if(kilometer<0){                                    
+        return "please input valid number";             //to avoid negative number
     }
     else{
         var meter = kilometer*1000;                     //1kilometer == 1000 meter 
@@ -32,22 +30,25 @@ function hotelCost(days) {
     if(days<=10){                                               //first 10days start from 1-9
         discountPrice = days*100;
     }
-    else if (days<=20) {                                        //second 10 days start from 11-20
+    else if (days<=20) {                                        
         first10days = 10*100;
-        reminingDays = days-10;                                 //confirm second 10days
+        reminingDays = days-10;                                 
         second20days = reminingDays*100;
         discount = 20/100;                        
-        price = second20days - (second20days*discount);          //discount second 10 days off 20%
+        price = second20days - (second20days*discount);          
         discountPrice = price + first10days;                     //initial vallue included 20% discount
     }
-    else{
-        first10days = 10*100;                                    //first 10days 
-        second20days = 10*100;                                    //second 10 days 
-        reminingDays = days-20;                                   //confirm third days which will be 21 to infinity
+    else if(days>=21){
+        first10days = 10*100;                                    
+        second20days = 10*100;                                    
+        reminingDays = days-20;                                   
         thirdDays = reminingDays*100;
         discount = 50/100;
         price = thirdDays - (thirdDays*discount);                  //discount third  days off 50%
-        discountPrice = price + first10days + second20days;        //initial vallue included 50% discount
+        discountPrice = price + first10days + second20days;
+    }
+    else{
+        return "please Enter a valid quantiti"                     //extra part here
 
     }
     return discountPrice;
@@ -55,16 +56,20 @@ function hotelCost(days) {
 
 //Problem 4 ----> megaFriend - get the larget string in an array
 function megaFriend(nameList) {
-    var LargeName = [0];                                       // empty variable here will be the big element
-    for(var i = 0; i<nameList.length; i++){                    //friend list in array
-        var element = nameList[i];
-        if (element.length>LargeName.length){                  //get big length of array and pass it to largeName variable
-            LargeName = element;
-        }
-    }    
-    return LargeName;
+    var LargeName = [0];                                       
+    if(nameList.length>0){
+        for(var i = 0; i<nameList.length; i++){                    
+            var element = nameList[i];
+            if (element.length>LargeName.length){                  //get big length of array and pass it to largeName variable
+                LargeName = element;
+            }
+        }    
+        return LargeName;
+    }
+    else{
+        return("Please Provide a valid name List");             //extra part here 
+    }
 }
-
 
 
 
